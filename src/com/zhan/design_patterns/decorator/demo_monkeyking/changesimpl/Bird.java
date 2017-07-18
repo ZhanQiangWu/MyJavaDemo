@@ -9,8 +9,8 @@ import com.zhan.design_patterns.decorator.demo_monkeyking.MonkeyKing;
  */
 public class Bird extends Changes{
 
-    public Bird(MonkeyKing fish) {
-        super(fish);
+    public Bird(MonkeyKing monkeyKing) {
+        super(monkeyKing);
     }
 
 

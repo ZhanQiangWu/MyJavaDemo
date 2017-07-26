@@ -1,7 +1,9 @@
 package com.zhan.thinking_in_java.container;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 /**
  *  容器移除对象测试

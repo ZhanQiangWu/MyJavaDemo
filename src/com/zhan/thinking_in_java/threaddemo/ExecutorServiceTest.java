@@ -14,9 +14,34 @@ public class ExecutorServiceTest {
     public static void main(String[] args) {
 
 
-        newScheduledThreadPoolTest();
+        newSingleThreadExecutor();
 
 
+    }
+
+    /**
+     * 单线程化的线程池
+     * 它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行
+     */
+    private static void newSingleThreadExecutor() {
+        ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
+        for (int i = 0; i < 10; i++) {
+            final int index = i;
+            singleThreadExecutor.execute(new Runnable() {
+
+                @Override
+                public void run() {
+                    try {
+                        System.out.println(index + "  threadname: " + Thread.currentThread().getName()
+                                + "  threadid: " + Thread.currentThread().getId());
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
     }
 
     /**

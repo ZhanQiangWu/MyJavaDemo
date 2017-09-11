@@ -14,7 +14,8 @@ public class ExecutorServiceTest {
     public static void main(String[] args) {
 
 
-        newSingleThreadExecutor();
+        //newSingleThreadExecutor();
+        test1();
 
 
     }
@@ -149,11 +150,18 @@ public class ExecutorServiceTest {
         // 创建10个任务并执行
         for (int i = 0; i < 10; i++) {
             // 使用ExecutorService执行Callable类型的任务，并将结果保存在future变量中
-            Future<String> future = executorService.submit(new TaskWithResult(i));
-            // 将任务执行结果存储到List中
-            resultList.add(future);
+            if (!executorService.isShutdown()){
+                Future<String> future = executorService.submit(new TaskWithResult(i));
+                // 将任务执行结果存储到List中
+                resultList.add(future);
+            }
+
+            if (i==2){
+                System.out.println("终止执行");
+                executorService.shutdownNow();
+            }
+
         }
-        executorService.shutdown();
 
         //遍历任务的结果
         for (Future<String> fs : resultList) {
@@ -170,7 +178,6 @@ public class ExecutorServiceTest {
     }
 }
 
-
 class TaskWithResult implements Callable<String>{
 
     private int id;
@@ -185,11 +192,15 @@ class TaskWithResult implements Callable<String>{
      * @throws Exception
      */
     @Override
-    public String call() throws Exception {
+    public String call() throws TaskException {
         System.out.println("call()方法被自动调用,干活！！！ " + Thread.currentThread().getName());
 //        if (new Random().nextBoolean())
 //            throw new TaskException("Meet error in task. id = " + id + " " + Thread.currentThread().getName());
-
+//        try {
+//            Thread.sleep(500);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         // 一个模拟耗时的操作
         for (int i = 999999999; i > 0; i--)
             ;

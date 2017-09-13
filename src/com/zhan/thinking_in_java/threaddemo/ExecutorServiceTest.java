@@ -1,5 +1,6 @@
 package com.zhan.thinking_in_java.threaddemo;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,7 +16,7 @@ public class ExecutorServiceTest {
 
 
         //newSingleThreadExecutor();
-        test1();
+        test3();
 
 
     }
@@ -148,7 +149,7 @@ public class ExecutorServiceTest {
         List<Future<String>> resultList = new ArrayList<>();
 
         // 创建10个任务并执行
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1; i++) {
             // 使用ExecutorService执行Callable类型的任务，并将结果保存在future变量中
             if (!executorService.isShutdown()){
                 Future<String> future = executorService.submit(new TaskWithResult(i));

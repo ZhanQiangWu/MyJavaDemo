@@ -94,7 +94,7 @@ public class ExecutorServiceTest {
      */
     private static void test3() {
         System.out.println("系统数据 ： " + Runtime.getRuntime().availableProcessors());
-        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
         for (int i = 0; i < 10; i++) {
             final int index = i;
             fixedThreadPool.execute(new Runnable() {
@@ -215,6 +215,10 @@ class TaskException extends Exception {
         super(message);
     }
 }
+
+
+
+
 
 
 

@@ -1,5 +1,7 @@
 package com.zhan.thinking_in_java.threaddemo;
 
+import jdk.nashorn.internal.parser.JSONParser;
+
 import static com.zhan.thinking_in_java.threaddemo.newDemo.ArrayOfGenericReference.gia;
 
 /**

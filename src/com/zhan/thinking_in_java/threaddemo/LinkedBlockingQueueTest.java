@@ -27,7 +27,7 @@ public class LinkedBlockingQueueTest {
         }
 
         for (int i = 0; i < 6; i++) {
-            service.submit(new Producer(queue, "黄金酒," + i));
+            service.submit(new Producer(queue, "黄金酒" + i));
             service.submit(new Producer(queue, "美女演员" + i));
         }
 

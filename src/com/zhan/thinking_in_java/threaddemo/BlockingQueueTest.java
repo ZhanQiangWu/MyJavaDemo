@@ -12,9 +12,9 @@ public class BlockingQueueTest {
 
     public static void main(String[] args){
         BlockingQueue q = new SynchronousQueue<>();
-        Producer p = new Producer(q);
-        Consumer c1 = new Consumer(q);
-        Consumer c2 = new Consumer(q);
+        Pproducer p = new Pproducer(q);
+        Cconsumer c1 = new Cconsumer(q);
+        Cconsumer c2 = new Cconsumer(q);
         new Thread(p).start();
         new Thread(c1).start();
         new Thread(c2).start();
@@ -25,9 +25,9 @@ public class BlockingQueueTest {
 
 
 
-class Producer implements Runnable {
+class Pproducer implements Runnable {
     private final BlockingQueue queue;
-    Producer(BlockingQueue q) { queue = q; }
+    Pproducer(BlockingQueue q) { queue = q; }
     public void run() {
         try {
             while (true) { queue.put(produce()); }
@@ -42,9 +42,9 @@ class Producer implements Runnable {
     }
 }
 
-class Consumer implements Runnable {
+class Cconsumer implements Runnable {
     private final BlockingQueue queue;
-    Consumer(BlockingQueue q) { queue = q; }
+    Cconsumer(BlockingQueue q) { queue = q; }
     public void run() {
         try {
             while (true) { consume(queue.take()); }
